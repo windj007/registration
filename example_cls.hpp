@@ -1,12 +1,12 @@
 #ifndef EXAMPLE_CLS_HPP
 #define EXAMPLE_CLS_HPP
 
-#include "register.hpp"
+#include "registration/registration.hpp"
 
 // ******************************** interface **********************************
 class IClsFactory;
 
-REGISTER_REGISTER(
+REG_REGISTER(
       fact_cls_tag
     , std::string
     , boost::shared_ptr<IClsFactory>
@@ -17,14 +17,12 @@ class IClsFactory
 public:
     virtual std::string work() const = 0;
 
-    REGISTER_BASE_CLASS(fact_cls_tag, IClsFactory)
+    REG_BASE_CLASS(fact_cls_tag, IClsFactory)
 };
 
 
 // ******************************** factory 1 **********************************
-class ClsFactory1;
-
-REGISTER_CLASS_IMPL(fact_cls_tag, ClsFactory1, "cls_factory_1")
+REG_CLASS_IMPL(fact_cls_tag, ClsFactory1, "cls_factory_1")
 
 class ClsFactory1
     : public IClsFactory
@@ -37,16 +35,12 @@ public:
         return "Cls1";
     }
 
-    REGISTER_CLASS(fact_cls_tag, ClsFactory1)
+    REG_CLASS(fact_cls_tag, ClsFactory1)
 };
 
 
-
-
 // ******************************** factory 2 **********************************
-class ClsFactory2;
-
-REGISTER_CLASS_IMPL(fact_cls_tag, ClsFactory2, "cls_factory_2")
+REG_CLASS_IMPL(fact_cls_tag, ClsFactory2, "cls_factory_2")
 
 class ClsFactory2
     : public IClsFactory
@@ -65,7 +59,7 @@ public:
 private:
     std::string m_value;
 
-    REGISTER_CLASS(fact_cls_tag, ClsFactory2)
+    REG_CLASS(fact_cls_tag, ClsFactory2)
 };
 
 

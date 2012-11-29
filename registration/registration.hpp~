@@ -1,8 +1,6 @@
 #ifndef REGISTRATION_REGISTRATION_HPP
 #define REGISTRATION_REGISTRATION_HPP
 
-namespace registration
-{
-}
+#include "details/reg_cls.hpp"
 
 #endif // REGISTRATION_REGISTRATION_HPP
