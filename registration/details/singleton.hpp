@@ -1,16 +1,15 @@
-#ifndef SINGLETON_HPP
-#define SINGLETON_HPP
+#ifndef REGISTRATION_DETAILS_SINGLETON_HPP
+#define REGISTRATION_DETAILS_SINGLETON_HPP
+
+#include "config.hpp"
 
 #include <boost/shared_ptr.hpp>
 #include <boost/thread/once.hpp>
 
-class QQQ
+namespace REG_TOP_NS
 {
-public:
-    QQQ()
-    {
-    }
-};
+namespace REG_DETAILS_NS
+{
 
 template<
       typename T
@@ -32,7 +31,6 @@ private:
 
     static value_ptr_type                               s_instance;
     static boost::once_flag                             s_init_flag;
-    static QQQ                                          s_qqq;
 
     Singleton()
     {
@@ -55,5 +53,7 @@ template<typename TType>
 boost::once_flag
 Singleton<TType>::s_init_flag;
 
+} // namespace REG_DETAILS_NS
+} // namespace REG_TOP_NS
 
-#endif // SINGLETON_HPP
+#endif // REGISTRATION_DETAILS_SINGLETON_HPP
