@@ -75,19 +75,19 @@ private:
 } // namespace REG_DETAILS_NS
 } // namespace REG_TOP_NS
 
-#define REG_GET_REGISTER(tag) \
+#define REG_GET_REGISTER(tag, targs) \
     REG_UTILS_NS::Singleton< \
           REG_UTILS_NS::Register< \
-              REG_GET_TAG(tag) \
-            , REG_GET_TRAITS(tag)::reg_key_type \
-            , REG_GET_TRAITS(tag)::reg_value_type \
+              REG_GET_TAG(tag, targs) \
+            , REG_GET_TRAITS(tag, targs)::reg_key_type \
+            , REG_GET_TRAITS(tag, targs)::reg_value_type \
           > \
     >::instance()
 
-#define REG_CALL_REG(tag, key, ...) \
-    REG_GET_REGISTER(tag).reg( \
+#define REG_CALL_REG(tag, targs, key, ...) \
+    REG_GET_REGISTER(tag, targs).reg( \
           key \
-        , REG_GET_TRAITS(tag)::reg_value_type(__VA_ARGS__) \
+        , REG_GET_TRAITS(tag, targs)::reg_value_type(__VA_ARGS__) \
     )
 
 #endif // REGISTRATION_DETAILS_REGISTER_HPP
